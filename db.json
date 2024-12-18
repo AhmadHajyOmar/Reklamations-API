@@ -1,0 +1,68 @@
+[
+  {
+    "id": "3f2920b4-e7af-4fb3-8ea4-9d06a4e3f851",
+    "produktId": 66,
+    "kunde": {
+      "name": "Mohammad",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-01-15",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Accepted"
+  },
+  {
+    "id": "399acbc9-3af4-43c9-ac64-9769444b5b08",
+    "produktId": 33,
+    "kunde": {
+      "name": "Ahmad",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-07-10",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Canceled"
+  },
+  {
+    "id": "39af9997-f4ba-4783-b5b0-c422e7c04b8e",
+    "produktId": 22,
+    "kunde": {
+      "name": "Ali",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-04-11",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Canceled"
+  },
+  {
+    "id": "c1174ff1-c2f1-4bfa-9cd2-dff1fa8452e4",
+    "produktId": 66,
+    "kunde": {
+      "name": "sara",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-01-15",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Canceled"
+  },
+  {
+    "id": "20dc7e01-70c9-48bd-8f23-87702836ac16",
+    "produktId": 55,
+    "kunde": {
+      "name": "sara",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-01-15",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Canceled"
+  },
+  {
+    "id": "fb4db5d7-97a9-401d-843f-506a61c2759a",
+    "produktId": 66,
+    "kunde": {
+      "name": "mousa",
+      "email": "anna@example.com"
+    },
+    "datum": "2024-05-15",
+    "beschreibung": "Das Produkt hat einen Defekt.",
+    "status": "Canceled"
+  }
+]

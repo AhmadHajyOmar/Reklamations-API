@@ -1,0 +1,47 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Reklamations-API",
+      "description": "API zur Verwaltung von Produktreklamationen"
+    },
+    "host": "localhost:3000",
+    "basePath": "/complaints",
+    "paths": {
+      "/": {
+        "post": {
+          "summary": "Reklamation erstellen",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": { "$ref": "#/definitions/Complaint" }
+            }
+          ],
+          "responses": {
+            "201": { "description": "Reklamation erstellt" }
+          }
+        },
+        "get": {
+          "summary": "Alle Reklamationen abrufen",
+          "responses": {
+            "200": { "description": "Liste aller Reklamationen" }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Complaint": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "integer" },
+          "customer": { "type": "object" },
+          "date": { "type": "string" },
+          "description": { "type": "string" },
+          "status": { "type": "string" }
+        }
+      }
+    }
+  }
+  
