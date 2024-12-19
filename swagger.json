@@ -1,47 +1,284 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0.0",
-      "title": "Reklamations-API",
-      "description": "API zur Verwaltung von Produktreklamationen"
-    },
-    "host": "localhost:3000",
-    "basePath": "/complaints",
-    "paths": {
-      "/": {
-        "post": {
-          "summary": "Reklamation erstellen",
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": { "$ref": "#/definitions/Complaint" }
-            }
-          ],
-          "responses": {
-            "201": { "description": "Reklamation erstellt" }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Reklamations-API",
+    "description": "API zur Verwaltung von Produktreklamationen"
+  },
+  "host": "localhost:3000",
+  "basePath": "/complaints",
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "Reklamation erstellen",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Complaint" }
           }
-        },
-        "get": {
-          "summary": "Alle Reklamationen abrufen",
-          "responses": {
-            "200": { "description": "Liste aller Reklamationen" }
-          }
+        ],
+        "responses": {
+          "201": { "description": "Reklamation erstellt" }
+        }
+      },
+      "get": {
+        "summary": "Alle Reklamationen abrufen",
+        "responses": {
+          "200": { "description": "Liste aller Reklamationen" }
         }
       }
     },
-    "definitions": {
-      "Complaint": {
-        "type": "object",
-        "properties": {
-          "productId": { "type": "integer" },
-          "customer": { "type": "object" },
-          "date": { "type": "string" },
-          "description": { "type": "string" },
-          "status": { "type": "string" }
+    "/nameAuf": {
+      "get": {
+        "summary": "Reklamationen nach Namen aufsteigend sortieren",
+        "responses": {
+          "200": { "description": "Erfolg" }
+        }
+      }
+    },
+    "/nameAb": {
+      "get": {
+        "summary": "Reklamationen nach Namen absteigend sortieren",
+        "responses": {
+          "200": { "description": "Erfolg" }
+        }
+      }
+    },
+    "/pidAuf": {
+      "get": {
+        "summary": "Reklamationen nach Produkt-ID aufsteigend sortieren",
+        "responses": {
+          "200": { "description": "Erfolg" }
+        }
+      }
+    },
+    "/pidAb": {
+      "get": {
+        "summary": "Reklamationen nach Produkt-ID absteigend sortieren",
+        "responses": {
+          "200": { "description": "Erfolg" }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "summary": "Reklamation anhand der ID abrufen",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Erfolg" },
+          "404": { "description": "Reklamation nicht gefunden" }
+        }
+      }
+    },
+    "/datum/{datum}": {
+      "get": {
+        "summary": "Reklamationen nach Datum abrufen",
+        "parameters": [
+          {
+            "name": "datum",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Erfolg" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/produkt/{produktId}": {
+      "get": {
+        "summary": "Reklamationen nach Produkt-ID abrufen",
+        "parameters": [
+          {
+            "name": "produktId",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Erfolg" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/name/{name}": {
+      "get": {
+        "summary": "Reklamationen nach Kundennamen abrufen",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Erfolg" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/status/{status}": {
+      "get": {
+        "summary": "Reklamationen nach Status abrufen",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Erfolg" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/statistik/name/{name}": {
+      "get": {
+        "summary": "Statistik für einen bestimmten Kunden abrufen",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Statistik erfolgreich abgerufen" },
+          "404": { "description": "Keine Statistik gefunden" }
+        }
+      }
+    },
+    "/statistik/name": {
+      "get": {
+        "summary": "Statistik für alle Kunden abrufen",
+        "responses": {
+          "200": { "description": "Statistik erfolgreich abgerufen" }
+        }
+      }
+    },
+    "/statistik/anzahlStatus": {
+      "get": {
+        "summary": "Anzahl der Reklamationen pro Status abrufen",
+        "responses": {
+          "200": { "description": "Statistik erfolgreich abgerufen" }
+        }
+      }
+    },
+    "/{id}": {
+      "put": {
+        "summary": "Reklamation aktualisieren",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Complaint" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Reklamation erfolgreich aktualisiert" }
+        }
+      },
+      "delete": {
+        "summary": "Reklamation löschen",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Reklamation erfolgreich gelöscht" },
+          "404": { "description": "Reklamation nicht gefunden" }
+        }
+      }
+    },
+    "/produkt/{produktId}": {
+      "delete": {
+        "summary": "Reklamationen nach Produkt-ID löschen",
+        "parameters": [
+          {
+            "name": "produktId",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Reklamationen erfolgreich gelöscht" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/datum/{datum}": {
+      "delete": {
+        "summary": "Reklamationen nach Datum löschen",
+        "parameters": [
+          {
+            "name": "datum",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Reklamationen erfolgreich gelöscht" },
+          "404": { "description": "Keine Reklamationen gefunden" }
+        }
+      }
+    },
+    "/name/{name}": {
+      "delete": {
+        "summary": "Reklamationen nach Kundennamen löschen",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Reklamationen erfolgreich gelöscht" },
+          "404": { "description": "Keine Reklamationen gefunden" }
         }
       }
     }
+  },
+  "definitions": {
+    "Complaint": {
+      "type": "object",
+      "properties": {
+        "productId": { "type": "integer" },
+        "customer": { "type": "object" },
+        "date": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    }
   }
-  
+}
